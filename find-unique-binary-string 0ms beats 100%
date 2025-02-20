@@ -1,0 +1,13 @@
+public class Solution {
+    public string FindDifferentBinaryString(string[] nums) {
+        int i = 0;
+        StringBuilder sol = new();
+        foreach (string array in nums)
+        {
+            if (array[i] == '0') sol.Append("1");
+            else sol.Append("0");
+            i++;
+        }
+    return sol.ToString();
+    }
+}
