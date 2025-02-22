@@ -1,2 +1,2 @@
 # LeetCodeSubmissions
-This is a automatically synced repo filled with my leetcode submissions, for some reason this stopped updating and is unfortunately not accurate.
+Originally intended to be automatically synced with leetcode the chrome extension quickly broke and I only recently started putting leetcode solutions in here again.
