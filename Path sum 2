@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    public IList<IList<int>> PathSum(TreeNode root, int targetSum) {
+        if (root is null ) return [];
+        targetSum = targetSum - root.val;
+        IList<IList<int>> sols = new List<IList<int>>();
+        IList<IList<int>> results = new List<IList<int>>();
+        if (root.right == null && root.left == null){
+            if (targetSum == 0){
+                sols.Add(new List<int>([root.val]));
+                return sols;
+                }
+            else return sols;
+        }
+        if (root.left!= null){
+            results = PathSum(root.left, targetSum);
+            foreach (List<int> result in results){
+                sols.Add(result);
+            }
+        }
+        if (root.right!= null) {
+            results = PathSum(root.right, targetSum);
+            foreach (List<int> result in results){
+                sols.Add(result);
+            }
+        }
+        foreach (List<int> sol in sols){
+            sol.Insert(0,root.val);
+        }
+        return sols;
+    }
+}
