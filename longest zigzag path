@@ -1,0 +1,28 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    public int LongestZigZag(TreeNode root) {
+        if (root is null) return 0;
+        return Math.Max(helper(root.left,true,0), helper(root.right,false,0));
+    }
+
+    public int helper (TreeNode root,bool right,int count){ 
+        if (root is null) return count;
+        count++;
+        if (right) count = Math.Max(helper(root.right,false,count),helper(root.left, true, 0));
+        else count = Math.Max(helper(root.left,true,count),helper(root.right,false,0));
+        return count;
+    }
+
+}
