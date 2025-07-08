@@ -1,0 +1,22 @@
+public class Solution {
+    public double FindMaxAverage(int[] nums, int k) {
+        int i = 0;
+        int n = 0;
+        int max = 0;
+        bool swapped = false;
+        int window = 0;
+        while (n < nums.Length){
+            window += nums[n];
+            if (n - i == k-1){
+                if (window > max || !swapped ){ max = window; swapped = true;}
+                
+                window -= nums[i];
+                i++;
+            }
+            n++;
+
+        }
+        double answer = (double)max/(double)k;
+        return answer;
+    }
+}
