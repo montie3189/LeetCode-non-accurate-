@@ -1,0 +1,22 @@
+public class Solution {
+    public bool CanVisitAllRooms(IList<IList<int>> rooms) {
+        Queue<int> keys = new Queue<int>();
+        Dictionary<int,int> roomsVisited = new Dictionary<int,int>();
+        keys.Enqueue(0);
+        int roomNum = rooms.Count;
+        while(keys.Count > 0){
+            int roomCheck = keys.Dequeue();
+            IList<int> newKeys = rooms[roomCheck];
+            rooms[roomCheck] = [];
+            foreach (int key in newKeys) {
+                keys.Enqueue(key);
+            }
+            roomsVisited.TryAdd(roomCheck,0);
+            if (roomsVisited.Count == roomNum){
+                return true;
+            }
+
+        }
+        return false;
+    }
+}
